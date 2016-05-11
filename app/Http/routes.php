@@ -21,3 +21,5 @@ Route::get('/', function () {
 
 Route::get('cake', 'CakeController@create');
 Route::post('cake', 'CakeController@store');
+Route::get('orders', 'CakeController@index');
+Route::post('cake/orders/{order_id}', 'CakeController@status');

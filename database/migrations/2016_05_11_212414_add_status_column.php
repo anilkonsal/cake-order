@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderTable extends Migration
+class AddStatusColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,8 @@ class CreateOrderTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('type_of_cake');
-            $table->string('celebration_type');
-            $table->string('dream_cake');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->integer('status');
         });
     }
 
@@ -31,7 +25,7 @@ class CreateOrderTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            
         });
     }
 }

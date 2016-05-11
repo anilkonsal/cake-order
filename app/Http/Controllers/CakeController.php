@@ -15,6 +15,8 @@ class CakeController extends Controller {
 
     public function store(Request $request) {
  
+//        dd($_POST);
+        
         $this->validate($request, [
             'name'  =>  'required',
             'email' =>  'required',
@@ -30,6 +32,8 @@ class CakeController extends Controller {
             $celebration_type .= ': '.$request->celebration_type_other;
         }
         
+//        die($celebration_type);
+        
         $order = new Order();
         $order->name = $request->name;
         $order->email = $request->email;
@@ -40,6 +44,22 @@ class CakeController extends Controller {
         
         return view('cake.thanks');
         
+    }
+    
+    public function index() {
+        $orders = Order::where('status','=',0)->orderBy('id', 'desc')->get();
+        
+        return view('cake.index',['orders' => $orders]);
+    }
+    
+    public function status($order_id) {
+        $order = Order::findOrFail($order_id);
+        if ($order) {
+            $order->status = 1;
+            $order->save();
+            return 1;
+        }
+        return 0;
     }
 
 }
