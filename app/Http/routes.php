@@ -11,8 +11,13 @@
 |
 */
 
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cake', 'CakeController@create');
+Route::get('cake', 'CakeController@create');
+Route::post('cake', 'CakeController@store');
