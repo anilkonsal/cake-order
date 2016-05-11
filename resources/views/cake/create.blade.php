@@ -16,16 +16,16 @@
                 @endforeach
             </div>
             @endif
-            <form method="post" action='/cake'>
+            <form method="post" action='/cake' id='form'>
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required value="{{ old('name') }}">
-                    {{ $errors->first('name', '<div ')}}
+                    <input type="text" class="form-control" id="name" name="name" required  value="{{ old('name') }}">
+                    {{ $errors->first('name')}}
                 </div>
                 <div class="form-group">
                     <label for="name">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                    <input type="email" class="form-control" id="email" name="email" required value="{{ old('email') }}">
                     {{ $errors->first('email')}}
                 </div>
                 <div class="form-group">
@@ -58,14 +58,26 @@
 
 @stop
 
-@section('script')
+@section('scripts')
 
 <script type="text/javascript">
     $(function () {
-        $('#celebrationTypeOtherText').focus(function () {
-            console.log('focussed');
-            $('#celebrationTypeOther').prop('checked', true);
+        $('form').on('submit', function(e){
+            if ($('#celebrationTypeOther').is(':checked')){
+                if($('#celebrationTypeOtherText').val()=='') {
+                    alert('Please enter "Others" option');
+                    return false;
+                    e.preventDefault();
+                    $('#celebrationTypeOtherText').focus();
+                }
+            }
         });
+        $('#celebrationTypeOtherText').on('focus',function(){
+            
+            $('#celebrationTypeOther').prop('checked', true);
+            
+        })
+        
     })
 </script>
 

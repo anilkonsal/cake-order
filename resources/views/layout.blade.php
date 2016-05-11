@@ -24,6 +24,7 @@
                         <ul class="nav navbar-nav"> 
                             <li><a href="/">Home</a></li> 
                             <li><a href="/cake">Cake Order Form</a></li> 
+                            <li><a href="/orders">View Orders</a></li> 
                         </ul> 
                     </div> 
                 </div> 

@@ -46,6 +46,10 @@
         </tr>
         @endforeach
     </table>
+    @else
+    <div class="alert alert-danger">
+        <h3>No Orders!</h3>
+    </div>
     @endif
 @stop
 
