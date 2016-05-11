@@ -1,6 +1,7 @@
 # Cake Order App
 
 This is a Laravel app which has two components:
+
 1. Order Form
 2. Orders List
 
