@@ -27,11 +27,11 @@
                 </div>
                 <div class="form-group">
                     <label>Celebration Type</label> <br/>
-                    <input type="radio"  id="" name="celebrationType"> Birthday <br/>
-                    <input type="radio" id="" name="celebrationType"> Wedding <br/>
-                    <input type="radio" id="" name="celebrationType"> Corporate <br/>
-                    <input type="radio" id="" name="celebrationType"> Others <br/>
-                    <input type="text" class="form-control" id="celebrationTypeOther" name="celebrationTypeOther">
+                    <input type="radio"  id="celebrationTypeBirthday" name="celebrationType"required=""> Birthday <br/>
+                    <input type="radio" id="celebrationTypeWedding" name="celebrationType"> Wedding <br/>
+                    <input type="radio" id="celebrationTypeCorporate" name="celebrationType"> Corporate <br/>
+                    <input type="radio" id="celebrationTypeOther" name="celebrationType"> Others <br/>
+                    <input type="text" class="form-control" id="celebrationTypeOtherText" name="celebrationTypeOtherText">
                 </div>
                 <div class="form-group">
                     <label for="name">Tell us about your dream cake</label>
@@ -45,5 +45,18 @@
         </fieldset>
     </div>
 </div>
+
+@stop
+
+@section('script')
+
+<script type="text/javascript">
+    $(function(){
+        $('#celebrationTypeOtherText').focus(function(){
+            console.log('focussed');
+            $('#celebrationTypeOther').prop('checked', true);
+        });
+    })
+</script>
 
 @stop
